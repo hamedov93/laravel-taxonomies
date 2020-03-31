@@ -1,0 +1,38 @@
+{
+    "name": "hamedov/laravel-taxonomies",
+    "description": "Assign categories, tags, etc, to eloquent models.",
+    "keywords": ["laravel", "taxonomies", "categories", "tags", "attributes"],
+    "require": {
+        "php": "^7.2",
+        "spatie/laravel-medialibrary": "^7.19",
+        "spatie/laravel-translatable": "^4.3"
+    },
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/hamedov93/laravel-taxonomies/issues",
+        "source": "https://github.com/hamedov93/laravel-taxonomies"
+    },
+    "authors": [
+        {
+            "name": "Mohamed Hamed",
+            "email": "m.hamed@nezam.io"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hamedov\\Taxonomies\\TaxonomyServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Hamedov\\Taxonomies\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
