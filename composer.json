@@ -4,6 +4,7 @@
     "keywords": ["laravel", "taxonomies", "categories", "tags", "attributes"],
     "require": {
         "php": "^7.2",
+        "illuminate/support": "^7.4",
         "spatie/laravel-medialibrary": "^7.19",
         "spatie/laravel-translatable": "^4.3"
     },
