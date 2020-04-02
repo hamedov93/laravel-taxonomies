@@ -64,4 +64,9 @@ class Taxonomy extends Model implements HasMedia
     {
     	return $query->where('taxonomies.type', $type);
     }
+
+    public function setIcon($icon)
+    {
+        $this->addMedia($icon)->toMediaCollection(config('taxonomies.icon_collection_name', 'taxonomy_icons'));
+    }
 }
