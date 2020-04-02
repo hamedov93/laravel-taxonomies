@@ -52,9 +52,14 @@ trait HasTaxonomies
 			return false;
 		}
 
-		return $this->taxes()->create([
+		return $this->createTaxonomy($taxonomy_id);
+	}
+
+	public function createTaxonomy($taxonomy_id)
+	{
+		return $this->taxes()->firstOrCreate([
 			'taxonomy_id' => $taxonomy_id,
-			'taxable_id' => $this->id,
+			'taxable_id' => $this->getKey(),
 			'taxable_type' => $this->getMorphClass(),
 		]);
 	}
@@ -67,18 +72,11 @@ trait HasTaxonomies
 			return false;
 		}
 
-		$taxable_id = $this->id;
-		$taxable_type = $this->getMorphClass();
-
-		$actual_ids->transform(function($id) use ($taxable_id, $taxable_type) {
-			return [
-				'taxonomy_id' => $id,
-				'taxable_id' => $taxable_id,
-				'taxable_type' => $taxable_type,
-			];
+		$actual_ids->transform(function($id) {
+			return $this->createTaxonomy($id);
 		});
 
-		return $this->taxes()->createMany($actual_ids->toArray());
+		return $actual_ids;
 	}
 
 	public function setTaxonomies($taxonomies = [], $type = null)
