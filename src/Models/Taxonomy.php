@@ -41,11 +41,6 @@ class Taxonomy extends Model implements HasMedia
      */
     public function taxables($class_name)
     {
-    	if ($class_name instanceof Model)
-    	{
-    		$class_name = $class_name::class,
-    	}
-
     	return $this->morphedByMany($class_name, 'taxable');
     }
 
