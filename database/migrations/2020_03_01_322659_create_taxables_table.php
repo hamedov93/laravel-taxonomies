@@ -18,7 +18,7 @@ class CreateTaxablesTable extends Migration
             $table->morphs('taxable');
 
             $table->foreign('taxonomy_id')->references('id')->on('taxonomies')
-                ->onDelete('cascade')->onUpdate('cascade');
+                ->onDelete('cascade');
         });
     }
 

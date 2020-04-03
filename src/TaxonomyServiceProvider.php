@@ -14,7 +14,7 @@ class TaxonomyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'taxonomies');
+        $this->mergeConfigFrom(__DIR__.'/../config/taxonomies.php', 'taxonomies');
     }
 
     /**
@@ -25,8 +25,8 @@ class TaxonomyServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/config.php' => config_path('taxonomies.php'),
-        ]);
+            __DIR__.'/../config/taxonomies.php' => config_path('taxonomies.php'),
+        ], 'config');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
