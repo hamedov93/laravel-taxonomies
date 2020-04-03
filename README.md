@@ -5,7 +5,7 @@ Assign categories, tags, types, etc to your models or any taxonomy that can be u
 ```composer require hamedov/laravel-taxonomies```
 
 # Publish config file
-```php artisan vendor:publish --provider=Hamedov\Taxonomies\TaxonomyServiceProvider --tag="config"```
+```php artisan vendor:publish --provider="Hamedov\Taxonomies\TaxonomyServiceProvider" --tag="config"```
 
 # Create taxonomies
   ```
