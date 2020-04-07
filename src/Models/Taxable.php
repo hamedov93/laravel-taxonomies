@@ -17,6 +17,6 @@ class Taxable extends Model
 
     public function taxonomy()
     {
-    	return $this->belongsTo(Taxonomy::class);
+    	return $this->belongsTo(config('taxonomies.taxonomies_model', Taxonomy::class));
     }
 }

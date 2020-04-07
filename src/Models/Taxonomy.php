@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Taxonomy extends Model implements HasMedia
 {
 	use HasTranslations, HasMediaTrait;
+
+    protected $table = 'taxonomies';
 
     protected $fillable = [
     	'title', 'description', 'font_icon', 'type', 'parent_id'
