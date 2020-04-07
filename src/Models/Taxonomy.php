@@ -54,6 +54,17 @@ class Taxonomy extends Model implements HasMedia
     	return $this->hasMany(Taxable::class);
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(config('taxonomies.taxonomies_model', get_class($this)), 'parent_id');
+    }
+
+    public function icon()
+    {
+        return $this->morphOne(config('medialibrary.media_model'), 'model')
+            ->where('collection_name', config('taxonomies.icon_collection_name'));
+    }
+
     /**
      * Get taxonomies with specific type
      */
