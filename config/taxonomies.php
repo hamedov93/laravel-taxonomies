@@ -11,4 +11,13 @@ return [
 	'icon_conversions' => [
 		'thumb' => [120, 120], // Width, Height 
 	],
+
+	// Specify whether slugs should be unique
+	'unique_slugs' => true,
+
+	// Translation to use for slugs
+	'slug_locale' => 'en',
+
+	//Slug separator
+	'slug_separator' => '-',
 ];

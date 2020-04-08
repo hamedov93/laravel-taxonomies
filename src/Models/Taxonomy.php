@@ -6,16 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Taxonomy extends Model implements HasMedia
 {
-	use HasTranslations, HasMediaTrait;
+	use HasTranslations, HasMediaTrait, HasSlug;
 
     protected $table = 'taxonomies';
 
     protected $fillable = [
-    	'title', 'description', 'font_icon', 'type', 'parent_id'
+    	'title', 'description', 'font_icon', 'type', 'parent_id',
     ];
 
     public $translatable = [
@@ -26,7 +27,8 @@ class Taxonomy extends Model implements HasMedia
 	{
 	    $this
 	    	->addMediaCollection(config('taxonomies.icon_collection_name', 'taxonomy_icons'))
-	    	->registerMediaConversions(function (Media $media) {
+            ->singleFile()
+	    	->registerMediaConversions(function ($media) {
 	    		$conversions = config('taxonomies.icon_conversions', ['thumb' => [120, 120]]);
 	    		foreach ($conversions as $key => $value)
 	    		{
@@ -35,8 +37,25 @@ class Taxonomy extends Model implements HasMedia
 		                ->width($value[0])
 		                ->height($value[1]);
 	    		}
-        	})->singleFile();
+        	});
 	}
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions() : SlugOptions
+    {
+        $options = SlugOptions::create();
+        $options->generateSlugsFrom('title');
+        $options->saveSlugsTo('slug');
+        $options->usingSeparator(config('taxonomies.slug_separator', '-'));
+        $options->usingLanguage('en');
+
+        if (config('taxonomies.unique_slugs', true) === false)
+        {
+            $options->allowDuplicateSlugs();
+        }
+    }
 
     /**
      * Get models related to this taxonomy.
