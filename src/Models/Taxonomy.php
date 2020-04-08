@@ -55,6 +55,8 @@ class Taxonomy extends Model implements HasMedia
         {
             $options->allowDuplicateSlugs();
         }
+
+        return $options;
     }
 
     /**
