@@ -20,4 +20,7 @@ return [
 
 	//Slug separator
 	'slug_separator' => '-',
+
+	// Action to be taken on parent delete
+	'on_parent_delete' => 'cascade',
 ];
