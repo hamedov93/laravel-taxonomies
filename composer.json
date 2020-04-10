@@ -7,7 +7,8 @@
         "illuminate/support": "^7.4",
         "spatie/laravel-medialibrary": "^7.19",
         "spatie/laravel-sluggable": "^2.2",
-        "spatie/laravel-translatable": "^4.3"
+        "spatie/laravel-translatable": "^4.3",
+        "staudenmeir/laravel-adjacency-list": "^1.0"
     },
     "license": "MIT",
     "support": {

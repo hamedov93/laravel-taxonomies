@@ -8,10 +8,11 @@ use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 class Taxonomy extends Model implements HasMedia
 {
-	use HasTranslations, HasMediaTrait, HasSlug;
+	use HasTranslations, HasMediaTrait, HasSlug, HasRecursiveRelationships;
 
     protected $table = 'taxonomies';
 
