@@ -3,12 +3,13 @@
     "description": "Assign categories, tags, etc, to eloquent models.",
     "keywords": ["laravel", "taxonomies", "categories", "tags", "attributes"],
     "require": {
-        "php": "^7.2",
-        "illuminate/support": "^7.4",
-        "spatie/laravel-medialibrary": "^7.19",
-        "spatie/laravel-sluggable": "^2.2",
-        "spatie/laravel-translatable": "^4.3",
-        "staudenmeir/laravel-adjacency-list": "^1.0"
+        "php": "^7.3",
+        "illuminate/support": "^8.0",
+        "illuminate/database": "^8.0",
+        "spatie/laravel-medialibrary": "^8.0",
+        "spatie/laravel-sluggable": "^2.6",
+        "spatie/laravel-translatable": "^4.5",
+        "staudenmeir/laravel-adjacency-list": "^1.6"
     },
     "license": "MIT",
     "support": {

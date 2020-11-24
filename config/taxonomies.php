@@ -2,7 +2,7 @@
 
 return [
 	// Taxonomies model to be used
-	'taxonomies_model' => Hamedov\Taxonomies\Models\Taxonomy::class,
+	'taxonomies_model' => Hamedov\Taxonomies\Taxonomy::class,
 
 	// Taxonomy icon collection name for media library
 	'icon_collection_name' => 'taxonomy_icons',
@@ -20,7 +20,4 @@ return [
 
 	//Slug separator
 	'slug_separator' => '-',
-
-	// Action to be taken on parent delete
-	'on_parent_delete' => 'cascade',
 ];

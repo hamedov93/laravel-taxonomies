@@ -14,11 +14,9 @@ class CreateTaxablesTable extends Migration
     public function up()
     {
         Schema::create('taxables', function (Blueprint $table) {
-            $table->unsignedBigInteger('taxonomy_id');
-            $table->morphs('taxable');
-
-            $table->foreign('taxonomy_id')->references('id')->on('taxonomies')
+            $table->foreignId('taxonomy_id')->constrained('taxonomies')
                 ->onDelete('cascade');
+            $table->morphs('taxable');
         });
     }
 

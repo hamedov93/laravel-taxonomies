@@ -22,9 +22,6 @@ class CreateTaxonomiesTable extends Migration
             $table->string('type', 100)->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();
-
-            $table->foreign('parent_id')->references('id')->on('taxonomies')
-                ->onDelete(config('taxonomies.on_parent_delete', 'cascade'));
         });
     }
 
