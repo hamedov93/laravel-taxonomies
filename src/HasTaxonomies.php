@@ -119,6 +119,7 @@ trait HasTaxonomies
 
 	public function getModel()
 	{
-		return new config('taxonomies.taxonomies_model', Taxonomy::class);
+		$model = config('taxonomies.taxonomies_model', Taxonomy::class);
+		return new $model;
 	}
 }
