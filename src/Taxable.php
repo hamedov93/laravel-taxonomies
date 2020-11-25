@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relatons\MorphTo;
 
 class Taxable extends Model
 {
+    protected $timestamps = false;
+    
     /**
      * Attributes that are mass assignable
      * @var array
