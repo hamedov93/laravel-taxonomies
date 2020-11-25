@@ -37,7 +37,7 @@ trait HasTaxonomies
 		if ($type === null) {
 			return $this->morphMany(Taxable::class, 'taxable');
 		} else {
-			return $this->morphMany(Taxable::class, 'taxable')->whereHas('taxonomies', function($query) use ($type) {
+			return $this->morphMany(Taxable::class, 'taxable')->whereHas('taxonomy', function($query) use ($type) {
 				$query->where('taxonomies.type', $type);
 			});
 		}
