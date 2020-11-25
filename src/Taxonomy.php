@@ -4,15 +4,16 @@ namespace Hamedov\Taxonomies;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 class Taxonomy extends Model implements HasMedia
 {
-	use HasTranslations, HasMediaTrait, HasSlug, HasRecursiveRelationships;
+	use HasTranslations, InteractsWithMedia, HasSlug, HasRecursiveRelationships;
 
     protected $table = 'taxonomies';
 
@@ -24,22 +25,25 @@ class Taxonomy extends Model implements HasMedia
     	'title', 'description',
     ];
 
-    public function registerMediaCollections()
+    public function registerMediaCollections(): void
 	{
-	    $this
-	    	->addMediaCollection(config('taxonomies.icon_collection_name', 'taxonomy_icons'))
-            ->singleFile()
-	    	->registerMediaConversions(function ($media) {
-	    		$conversions = config('taxonomies.icon_conversions', ['thumb' => [120, 120]]);
-	    		foreach ($conversions as $key => $value)
-	    		{
-	    			$this
-		                ->addMediaConversion($key)
-		                ->width($value[0])
-		                ->height($value[1]);
-	    		}
-        	});
+	    $this->addMediaCollection(config('taxonomies.icon_collection_name', 'taxonomy_icons'))
+            ->singleFile();
 	}
+
+    /**
+     * Register media conversions
+     * @return void
+     */
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $conversions = config('taxonomies.icon_conversions', ['thumb' => [120, 120]]);
+        foreach ($conversions as $key => $value) {
+            $this->addMediaConversion($key)
+                ->fit(Manipulations::FIT_CROP, $value[0], $value[1])
+                ->performOnCollections(config('taxonomies.icon_collection_name', 'taxonomy_icons'));
+        }
+    }
 
     /**
      * Get the options for generating the slug.
