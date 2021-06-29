@@ -3,7 +3,7 @@
     "description": "Assign categories, tags, etc, to eloquent models.",
     "keywords": ["laravel", "taxonomies", "categories", "tags", "attributes"],
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.0",
         "illuminate/support": "^8.0",
         "illuminate/database": "^8.0",
         "spatie/laravel-medialibrary": "^8.0",
