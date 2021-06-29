@@ -6,7 +6,7 @@
         "php": "^7.3|^8.0",
         "illuminate/support": "^8.0",
         "illuminate/database": "^8.0",
-        "spatie/laravel-medialibrary": "^8.0",
+        "spatie/laravel-medialibrary": "^9.0",
         "spatie/laravel-sluggable": "^2.6",
         "spatie/laravel-translatable": "^4.5",
         "staudenmeir/laravel-adjacency-list": "^1.6"
