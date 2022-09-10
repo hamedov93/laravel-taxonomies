@@ -88,7 +88,7 @@ class Taxonomy extends Model implements HasMedia
 
     public function icon()
     {
-        return $this->morphOne(config('medialibrary.media_model'), 'model')
+        return $this->morphOne(config('media-library.media_model'), 'model')
             ->where('collection_name', config('taxonomies.icon_collection_name'));
     }
 
